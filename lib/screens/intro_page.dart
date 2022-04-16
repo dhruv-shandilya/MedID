@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_app/screens/bezier.dart';
 import '../../utils/constants.dart';
+import '../../utils/variables.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -85,7 +86,8 @@ class IntroPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  print("hello");
+                  log = true;
+                  Navigator.pushNamed(context, '/toWelcome');
                 },
               ),
             ),
@@ -114,7 +116,8 @@ class IntroPage extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      //link this to signUp page
+                      log = false;
+                      Navigator.pushNamed(context, '/toWelcome');
                     },
                   ),
                 ],

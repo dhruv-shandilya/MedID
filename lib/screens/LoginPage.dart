@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:med_app/utils/constants.dart';
+import 'package:med_app/widgets/gradButton.dart';
 import '../widgets/medcard.dart';
 import '../widgets/medTextInput.dart';
 import 'package:med_app/utils/variables.dart';
 
 void acceptUserID(String? a) {
-  UserID = a;
+  plUserID = a;
 }
 
 class Login extends StatelessWidget {
@@ -57,7 +58,7 @@ class Login extends StatelessWidget {
                           enableSuggestions: false,
                           autocorrect: false,
                           onSubmitted: (String? a) {
-                            password = a;
+                            plPassword = a;
                           },
                         ),
                       ), //for password
@@ -82,11 +83,29 @@ class Login extends StatelessWidget {
                               ),
                             ),
                             onTap: () {
-                              //link this to signUp page
+                              Navigator.pushNamed(context, '/toWelcome');
                             },
                           ),
                         ],
                       ), //signup waali line
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            child: GradButton(
+                              text: "Submit",
+                              widthFrac: 0.4,
+                            ),
+                            onTap: () {
+                              if (doc == true) {
+                                Navigator.pushNamed(context, '/toenterID');
+                              } else {
+                                Navigator.pushNamed(context, '/toPdfUpload');
+                              }
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),

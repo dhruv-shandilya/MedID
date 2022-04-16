@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:med_app/utils/constants.dart';
+import 'package:med_app/utils/variables.dart';
 import 'package:med_app/widgets/medcard.dart';
 
 class Welcome extends StatefulWidget {
@@ -87,7 +88,14 @@ class _WelcomeState extends State<Welcome> {
                         )
                       ],
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      doc = true;
+                      if (log == true) {
+                        Navigator.pushNamed(context, '/toLogin');
+                      } else {
+                        Navigator.pushNamed(context, '/toDocVerifi');
+                      }
+                    },
                   ), //for doctor row
                   GestureDetector(
                     child: Row(
@@ -108,7 +116,13 @@ class _WelcomeState extends State<Welcome> {
                         )
                       ],
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      if (log == true) {
+                        Navigator.pushNamed(context, '/toLogin');
+                      } else {
+                        Navigator.pushNamed(context, '/toPatientSignUp');
+                      }
+                    },
                   ), //for patient row
                 ],
               ),
