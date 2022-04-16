@@ -117,6 +117,7 @@ class _WelcomeState extends State<Welcome> {
                       ],
                     ),
                     onTap: () {
+                      doc = false;
                       if (log == true) {
                         Navigator.pushNamed(context, '/toLogin');
                       } else {

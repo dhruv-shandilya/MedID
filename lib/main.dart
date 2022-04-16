@@ -5,7 +5,7 @@ import 'package:med_app/screens/docVerification.dart';
 import 'package:med_app/screens/enterID.dart';
 import 'package:med_app/screens/medicalList.dart';
 import 'package:med_app/screens/patient_signUp.dart';
-import 'package:med_app/screens/pdfUpload.dart';
+import 'package:med_app/screens/pdf_upload.dart';
 import 'package:med_app/screens/signUpComplete.dart';
 import 'screens/intro_page.dart';
 import 'screens/LoginPage.dart';
