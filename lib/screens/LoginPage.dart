@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:med_app/services/firebase_au.dart';
 import 'package:med_app/utils/constants.dart';
 import 'package:med_app/widgets/gradButton.dart';
+import 'package:provider/provider.dart';
 import '../widgets/medcard.dart';
 import '../widgets/medTextInput.dart';
 import 'package:med_app/utils/variables.dart';
@@ -44,7 +46,7 @@ class Login extends StatelessWidget {
                       ),
                       textInput(
                           onSubmitted: acceptUserID,
-                          hintText: "User ID"), //for userID
+                          hintText: "Email ID"), //for userID
                       Container(
                         width: MediaQuery.of(context).size.width * 0.75,
                         child: TextField(
@@ -97,6 +99,9 @@ class Login extends StatelessWidget {
                               widthFrac: 0.4,
                             ),
                             onTap: () {
+                              Provider.of<fb_auth>(context, listen: false)
+                                  .logIn(
+                                      emailID: plUserID, password: plPassword);
                               if (doc == true) {
                                 Navigator.pushNamed(context, '/toenterID');
                               } else {
