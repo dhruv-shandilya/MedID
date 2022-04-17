@@ -1,15 +1,18 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:med_app/services/firebase_db.dart';
 import 'package:med_app/utils/constants.dart';
 import 'package:med_app/utils/variables.dart';
 import 'package:med_app/widgets/gradButton.dart';
 
 import '../widgets/medTextInput.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
 double gap = 20;
 
 void acceptContact(String? a) {
-  dsContact = a;
+  dsEmailID = a;
 }
 
 void acceptMedicalID(String? a) {
@@ -142,6 +145,14 @@ class DocVerifi extends StatelessWidget {
                         text: "Submit",
                       ),
                       onTap: () {
+                        Provider.of<FirebaseDB>(context, listen: false)
+                            .register(
+                                email: dsEmailID!,
+                                password: dsPassword!,
+                                isDoctor: doc,
+                                name: dsName!,
+                                surname: dsSurname!,
+                                medicalId: dsMedicalID);
                         Navigator.pushNamed(context, '/toenterID');
                       },
                     ),

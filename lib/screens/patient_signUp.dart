@@ -5,12 +5,11 @@ import 'package:med_app/utils/variables.dart';
 import 'package:med_app/widgets/gradButton.dart';
 
 import '../widgets/medTextInput.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import 'package:med_app/services/firebase_db.dart';
 
 double gap = 20;
-
-void acceptContact(String? a) {
-  psContact = a;
-}
 
 void acceptEmailID(String? a) {
   psEmailID = a;
@@ -90,12 +89,6 @@ class PatientSignUp extends StatelessWidget {
                           SizedBox(
                             height: gap,
                           ),
-                          textInput(
-                              onSubmitted: acceptContact,
-                              hintText: "Contact no."),
-                          SizedBox(
-                            height: gap,
-                          ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.75,
                             child: TextField(
@@ -141,6 +134,13 @@ class PatientSignUp extends StatelessWidget {
                         text: "Submit",
                       ),
                       onTap: () {
+                        Provider.of<FirebaseDB>(context, listen: false)
+                            .register(
+                                email: dsEmailID!,
+                                password: dsPassword!,
+                                isDoctor: doc,
+                                name: dsName!,
+                                surname: dsSurname!);
                         Navigator.pushNamed(context, '/toSignUpComplete');
                       },
                     ),

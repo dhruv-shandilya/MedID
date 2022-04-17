@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:med_app/screens/patient_signUp.dart';
 import 'package:med_app/screens/pdf_upload.dart';
 import 'package:med_app/screens/signUpComplete.dart';
 import 'package:med_app/services/firebase_au.dart';
+import 'package:med_app/services/firebase_db.dart';
 import 'screens/intro_page.dart';
 import 'screens/LoginPage.dart';
 import 'screens/splash_screen.dart';
@@ -30,6 +32,9 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<fb_auth>(
           create: (_) => fb_auth(FirebaseAuth.instance),
+        ),
+        Provider<FirebaseDB>(
+          create: (_) => FirebaseDB(FirebaseFirestore.instance,FirebaseAuth.instance),
         ),
         StreamProvider(
           create: (context) => context.read<fb_auth>().authStateChanges,

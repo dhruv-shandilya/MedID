@@ -9,7 +9,6 @@ String? plPassword;
 String? psName;
 String? psSurname;
 String? psEmailID;
-String? psContact;
 String? psPassword;
 String? psConfirmPassword;
 
@@ -17,7 +16,7 @@ String? psConfirmPassword;
 String? dsName;
 String? dsSurname;
 String? dsMedicalID;
-String? dsContact;
+String? dsEmailID;
 String? dsPassword;
 String? dsConfirmPassword;
 
